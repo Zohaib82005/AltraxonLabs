@@ -1,46 +1,51 @@
-function IconChip() {
+function IconVision() {
   return (
     <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <rect x="7" y="7" width="26" height="26" rx="5" stroke="currentColor" strokeWidth="1.6" />
-      <rect x="13" y="13" width="14" height="14" rx="2.5" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M20 4v5M20 31v5M4 20h5M31 20h5M8 9l3.5 3.5M32 9l-3.5 3.5M8 31l3.5-3.5M32 31l-3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      <circle cx="20" cy="20" r="3" fill="currentColor" />
+      <path d="M4 20s4-8 16-8 16 8 16 8-4 8-16 8S4 20 4 20Z" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="20" cy="20" r="4.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M20 8.5v4m0 15v4M8.5 20h4m15 0h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.6" />
+      <circle cx="20" cy="20" r="1.6" fill="currentColor" />
     </svg>
   )
 }
 
-function IconResearch() {
+function IconMission() {
   return (
     <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path d="M12 5v30M26 5v30M12 10h14M12 19h14M12 28h14M9 5h30M9 35h30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="20" cy="20" r="5.5" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M20 20l11-11M20 20l-7 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M20 3.5V7m0 26v3.5M36.5 20H33M7 20H3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.6" />
     </svg>
   )
 }
 
-function IconShield() {
+function IconPhilosophy() {
   return (
     <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path d="M20 4 32 9v11c0 8-5 13.5-12 16-7-2.5-12-8-12-16V9L20 4Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="m14.5 20 4 4 7-7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="m20 3 15 9v16l-15 9-15-9V12l15-9Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="m20 12 9 5.5v9L20 32l-9-5.5v-9L20 12Z" stroke="currentColor" strokeWidth="1.2" opacity="0.55" />
+      <circle cx="20" cy="20" r="3.5" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="20" cy="20" r="1.4" fill="currentColor" />
     </svg>
   )
 }
 
-const VALUES = [
+const PILLARS = [
   {
-    icon: IconChip,
-    title: 'Research-Driven',
-    text: 'Every product we ship is forged in the laboratory — grounded in peer-reviewed research and validated through rigorous experimentation.',
+    icon: IconVision,
+    title: 'Vision',
+    text: 'To be the technology partner businesses trust with their most important ideas — and to help them ship software that is not just functional, but genuinely useful, reliable, and built to last for years.',
   },
   {
-    icon: IconResearch,
-    title: 'Built to Scale',
-    text: 'Our architectures are production-grade from day one: distributed, observable, and engineered to perform under real-world enterprise load.',
+    icon: IconMission,
+    title: 'Mission',
+    text: 'Turn business ideas into production-ready digital products. We design pragmatically, engineer rigorously, and support every system long after launch so it keeps compounding value.',
   },
   {
-    icon: IconShield,
-    title: 'Ethical by Design',
-    text: 'Safety, transparency, and responsible AI are not add-ons. They are the foundation of every system we design and deploy.',
+    icon: IconPhilosophy,
+    title: 'Core Philosophy',
+    text: 'Clarity over complexity, results over style. We choose the right tool for the job, keep our process transparent, and measure success by the outcomes our clients achieve.',
   },
 ]
 
@@ -48,24 +53,66 @@ export default function About() {
   return (
     <section id="about" className="section about">
       <div className="section-head">
-        <p className="section-eyebrow">Who We Are</p>
+        <p className="section-eyebrow">About Altraxon Labs</p>
         <h2 className="section-title">
-          A deep-technology company shaping{' '}
-          <span className="gradient-text">the future of intelligence</span>
+          A software house building{' '}
+          <span className="gradient-text">what businesses need next</span>
         </h2>
         <p className="section-desc">
-          Founded in 2026, Altraxon Labs is an AI and deep-technology startup building the
-          intelligent systems that will define the next decade — from adaptive neural
-          architectures to next-generation digital infrastructure.
+          Altraxon Labs is a modern software house and technology solutions company. We
+          design, build, and ship digital products — from web platforms and SaaS
+          applications to AI-powered tools and automation systems — for startups,
+          businesses, and organizations around the world.
         </p>
       </div>
 
-      <div className="about-grid">
-        {VALUES.map((v, i) => (
-          <article className="glass-card about-card" key={v.title} style={{ '--d': `${i * 90}ms` } as React.CSSProperties}>
-            <div className="about-card-icon">{v.icon()}</div>
-            <h3 className="about-card-title">{v.title}</h3>
-            <p className="about-card-text">{v.text}</p>
+      <div className="about-story">
+        <div className="about-story-copy">
+          <div className="about-block">
+            <h3>The problem we set out to solve</h3>
+            <p>
+              Great ideas rarely fail for lack of ambition — they fail when they can’t
+              find the engineering needed to ship. Many businesses are held back by
+              off-the-shelf tools that don’t fit their reality, outsourced code that can’t
+              scale, and timelines that slip for months. The result is a persistent gap
+              between what businesses can imagine and what they can actually deploy.
+            </p>
+          </div>
+          <div className="about-block">
+            <h3>Why Altraxon exists</h3>
+            <p>
+              We exist to close that gap. Altraxon was founded on a simple conviction:
+              reliable, well-engineered software is one of the fastest ways to move a
+              business forward. We build with modern technology and disciplined process so
+              our partners can focus on growing — while we own the engineering that gets
+              them there.
+            </p>
+          </div>
+        </div>
+
+        <div className="about-core" aria-hidden="true">
+          <span className="about-core-ring r1">
+            <i className="about-core-sat" />
+          </span>
+          <span className="about-core-ring r2">
+            <i className="about-core-sat" />
+          </span>
+          <span className="about-core-ring r3" />
+          <span className="about-core-dot" />
+        </div>
+      </div>
+
+      <div className="about-pillars">
+        {PILLARS.map((p, i) => (
+          <article
+            className="glass-card pillar-card"
+            key={p.title}
+            style={{ '--d': `${i * 90}ms` } as React.CSSProperties}
+          >
+            <span className="pillar-halo" />
+            <div className="pillar-icon">{p.icon()}</div>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
           </article>
         ))}
       </div>

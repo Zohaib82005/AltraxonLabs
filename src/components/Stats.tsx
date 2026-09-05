@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
 const STATS = [
-  { value: 15, suffix: '+', label: 'Research Papers', sub: 'Published at leading venues' },
-  { value: 8, suffix: '', label: 'AI Models', sub: 'In production deployments' },
-  { value: 50, suffix: '+', label: 'Enterprise Clients', sub: 'Across 12 industries' },
-  { value: 6, suffix: '', label: 'Patents Filed', sub: 'In core deep-tech domains' },
-  { value: 35, suffix: '+', label: 'AI Experts', sub: 'Researchers & engineers' },
+  { value: 60, suffix: '+', label: 'Projects Delivered', sub: 'Across web, SaaS & AI' },
+  { value: 30, suffix: '+', label: 'Products Shipped', sub: 'From idea to production' },
+  { value: 12, suffix: '', label: 'Industries Served', sub: 'Startups to enterprises' },
+  { value: 80, suffix: '+', label: 'Clients Served', sub: 'Businesses & organizations' },
+  { value: 35, suffix: '+', label: 'Team Members', sub: 'Engineers, designers & PMs' },
 ]
 
 function useCountUp(target: number, start: boolean, duration = 1800) {

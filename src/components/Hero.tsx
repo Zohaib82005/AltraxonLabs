@@ -53,14 +53,15 @@ export default function Hero() {
           </h1>
 
           <p className="hero-subtitle">
-            Altraxon Labs builds intelligent technologies, adaptive AI systems, and
-            next-generation digital solutions — engineered at the frontier of deep
-            technology to power what comes next.
+            Altraxon Labs is a modern software house and technology solutions company. We
+            design, build, and ship digital products — web platforms, SaaS applications,
+            AI-powered tools, and automation systems — for startups, businesses, and
+            organizations worldwide.
           </p>
 
           <div className="hero-actions">
-            <a href="#solutions" className="btn btn-primary">
-              Explore Solutions
+            <a href="#services" className="btn btn-primary">
+              Explore Services
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path
                   d="M3.75 10h12.5M11.5 5.25 16.25 10l-4.75 4.75"
@@ -78,18 +79,18 @@ export default function Hero() {
 
           <div className="hero-metrics">
             <div className="hero-metric">
-              <span className="hero-metric-value">15+</span>
-              <span className="hero-metric-label">Research Papers</span>
+              <span className="hero-metric-value">60+</span>
+              <span className="hero-metric-label">Projects Delivered</span>
             </div>
             <div className="hero-metric-sep" />
             <div className="hero-metric">
-              <span className="hero-metric-value">8</span>
-              <span className="hero-metric-label">AI Models</span>
+              <span className="hero-metric-value">30+</span>
+              <span className="hero-metric-label">Products Shipped</span>
             </div>
             <div className="hero-metric-sep" />
             <div className="hero-metric">
-              <span className="hero-metric-value">50+</span>
-              <span className="hero-metric-label">Enterprise Clients</span>
+              <span className="hero-metric-value">80+</span>
+              <span className="hero-metric-label">Clients Served</span>
             </div>
           </div>
         </div>
@@ -105,7 +106,7 @@ export default function Hero() {
           </div>
           <div className="hero-visual-label">
             <span className="hero-visual-pulse" />
-            AlettaOS · Neural Core
+            ALX · Product Console
           </div>
         </div>
       </div>

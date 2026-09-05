@@ -3,18 +3,18 @@ const COLUMNS = [
     title: 'Company',
     links: [
       { label: 'About', href: '#about' },
-      { label: 'Research', href: '#research' },
-      { label: 'Projects', href: '#projects' },
-      { label: 'Careers', href: '#contact' },
+      { label: 'Services', href: '#services' },
+      { label: 'What We Build', href: '#work' },
+      { label: 'Why Altraxon', href: '#why-us' },
     ],
   },
   {
-    title: 'Solutions',
+    title: 'Services',
     links: [
-      { label: 'Adaptive AI Systems', href: '#solutions' },
-      { label: 'Intelligent Automation', href: '#solutions' },
-      { label: 'Data Intelligence', href: '#solutions' },
-      { label: 'Conversational AI', href: '#solutions' },
+      { label: 'Web Development', href: '#services' },
+      { label: 'Custom Software', href: '#services' },
+      { label: 'AI/ML Solutions', href: '#services' },
+      { label: 'Business Automation', href: '#services' },
     ],
   },
   {
@@ -48,7 +48,7 @@ function FooterLogo() {
 
 export default function Footer() {
   return (
-    <footer id="contact" className="footer">
+    <footer className="footer">
       <div className="footer-glow" />
       <div className="footer-inner">
         <div className="footer-top">
@@ -61,8 +61,9 @@ export default function Footer() {
               </span>
             </a>
             <p className="footer-tagline">
-              Engineering intelligence for the next era. An AI and deep-technology
-              research laboratory building the systems that will power tomorrow.
+              A modern software house and technology solutions company — helping startups,
+              businesses, and organizations design, build, and ship production-ready
+              digital products.
             </p>
           </div>
 
