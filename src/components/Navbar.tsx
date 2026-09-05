@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -6,12 +7,20 @@ const NAV_LINKS = [
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
   { label: 'Why Us', href: '#why-us' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Industries', href: '#industries' },
 ]
+
+function useOnHome() {
+  const location = useLocation()
+  return location.pathname === '/'
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const location = useLocation()
+  const onHome = useOnHome()
+  const prevPath = useRef(location.pathname)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -27,26 +36,48 @@ export default function Navbar() {
     }
   }, [open])
 
+  useEffect(() => {
+    const pathChanged = prevPath.current !== location.pathname
+    prevPath.current = location.pathname
+
+    if (location.hash) {
+      const el = document.getElementById(location.hash.replace('#', ''))
+      if (el) {
+        el.scrollIntoView()
+        return
+      }
+    }
+
+    if (pathChanged) {
+      window.scrollTo(0, 0)
+    }
+  }, [location.pathname, location.hash])
+
+  const hrefFor = (href: string) => (onHome ? href : `/#${href.slice(1)}`)
+
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
-        <a href="#home" className="nav-logo" aria-label="Altraxon Labs — Home">
-          <img src='/logo.png' width={40} />
+        <Link to="/" className="nav-logo" aria-label="Altraxon Labs — Home" onClick={() => setOpen(false)}>
+          <img src="/logo.png" width={40} alt="" />
           <span className="nav-logo-text">
             <span className="nav-logo-name">ALTRAXON</span>
             <span className="nav-logo-sub">LABS</span>
           </span>
-        </a>
+        </Link>
 
         <nav className="nav-links" aria-label="Primary">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link">
+            <Link key={link.href} to={hrefFor(link.href)} onClick={() => setOpen(false)} className="nav-link">
               {link.label}
-            </a>
+            </Link>
           ))}
+          <Link to="/contact" className="nav-link">
+            Contact
+          </Link>
         </nav>
 
-        <a href="#contact" className="nav-cta">
+        <Link to={onHome ? '#contact' : '/contact#contact-form'} className="nav-cta">
           <span>Start Your Project</span>
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path
@@ -57,7 +88,7 @@ export default function Navbar() {
               strokeLinejoin="round"
             />
           </svg>
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -75,21 +106,30 @@ export default function Navbar() {
       <div className={`mobile-menu ${open ? 'open' : ''}`}>
         <nav aria-label="Mobile">
           {NAV_LINKS.map((link, i) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={hrefFor(link.href)}
               className="mobile-link"
               style={{ transitionDelay: `${80 + i * 40}ms` }}
               onClick={() => setOpen(false)}
             >
               <span className="mobile-index">{String(i + 1).padStart(2, '0')}</span>
               {link.label}
-            </a>
+            </Link>
           ))}
+          <Link
+            to="/contact"
+            className="mobile-link"
+            style={{ transitionDelay: `${80 + NAV_LINKS.length * 40}ms` }}
+            onClick={() => setOpen(false)}
+          >
+            <span className="mobile-index">{String(NAV_LINKS.length + 1).padStart(2, '0')}</span>
+            Contact
+          </Link>
         </nav>
-        <a href="#contact" className="mobile-cta" onClick={() => setOpen(false)}>
+        <Link to="/contact" className="mobile-cta" onClick={() => setOpen(false)}>
           Start Your Project
-        </a>
+        </Link>
       </div>
     </header>
   )

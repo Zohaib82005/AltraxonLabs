@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const COLUMNS = [
   {
     title: 'Company',
@@ -20,10 +22,8 @@ const COLUMNS = [
   {
     title: 'Contact',
     links: [
-      { label: 'solutions@altraxonlabs.ai', href: 'mailto:solutions@altraxonlabs.ai' },
-      { label: 'San Francisco, CA', href: '#contact' },
-      { label: 'LinkedIn', href: '#contact' },
-      { label: 'GitHub', href: '#contact' },
+      { label: 'Start a Project', href: '/contact' },
+      { label: 'Contact Us', href: '/contact' },
     ],
   },
 ]
@@ -53,13 +53,13 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-top">
           <div className="footer-brand">
-            <a href="#home" className="footer-logo">
+            <Link to="/" className="footer-logo">
               <FooterLogo />
               <span>
                 <strong>ALTRAXON</strong>
                 <span className="footer-logo-sub">LABS</span>
               </span>
-            </a>
+            </Link>
             <p className="footer-tagline">
               A modern software house and technology solutions company — helping startups,
               businesses, and organizations design, build, and ship production-ready
@@ -74,7 +74,11 @@ export default function Footer() {
                 <ul>
                   {col.links.map((l) => (
                     <li key={l.label}>
-                      <a href={l.href}>{l.label}</a>
+                      {l.href.startsWith('/') ? (
+                        <Link to={l.href}>{l.label}</Link>
+                      ) : (
+                        <Link to={`/#${l.href.slice(1)}`}>{l.label}</Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -82,17 +86,16 @@ export default function Footer() {
             ))}
           </div>
 
-          <a href="#contact" className="btn btn-primary footer-cta">
+          <Link to="/contact" className="btn btn-primary footer-cta">
             Start a Conversation
-          </a>
+          </Link>
         </div>
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Altraxon Labs. All rights reserved.</p>
           <div className="footer-meta">
-            <a href="#home">Privacy</a>
-            <a href="#home">Terms</a>
-            <a href="#home">Security</a>
+            <Link to="/">Home</Link>
+            <Link to="/contact">Contact</Link>
           </div>
         </div>
       </div>

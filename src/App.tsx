@@ -1,35 +1,33 @@
-import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Approach from './components/Approach'
+import IdeaProduct from './components/IdeaProduct'
 import WhatWeBuild from './components/WhatWeBuild'
 import Technology from './components/Technology'
 import WhyUs from './components/WhyUs'
+import Industries from './components/Industries'
 import InnovationLab from './components/InnovationLab'
 import Stats from './components/Stats'
 import FinalCta from './components/FinalCta'
-import Footer from './components/Footer'
 import './App.css'
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Approach />
-        <WhatWeBuild />
-        <Technology />
-        <WhyUs />
-        <InnovationLab />
-        <Stats />
-      </main>
+    <main>
+      <Hero />
+      <About />
+      <Services />
+      <Approach />
+      <IdeaProduct />
+      <WhatWeBuild />
+      <Technology />
+      <WhyUs />
+      <Industries />
+      <InnovationLab />
+      <Stats />
       <FinalCta />
-      <Footer />
-    </div>
+    </main>
   )
 }
 

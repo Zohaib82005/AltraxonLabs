@@ -54,15 +54,16 @@ export default function About() {
     <section id="about" className="section about">
       <div className="section-head">
         <p className="section-eyebrow">About Altraxon Labs</p>
+        <span className="about-founded">Founded 2026</span>
         <h2 className="section-title">
-          A software house building{' '}
-          <span className="gradient-text">what businesses need next</span>
+          We Turn Ideas Into{' '}
+          <span className="gradient-text">Digital Products</span>
         </h2>
         <p className="section-desc">
-          Altraxon Labs is a modern software house and technology solutions company. We
-          design, build, and ship digital products — from web platforms and SaaS
-          applications to AI-powered tools and automation systems — for startups,
-          businesses, and organizations around the world.
+          Altraxon Labs works with startups, entrepreneurs, and businesses to transform
+          ideas, operational challenges, and business requirements into modern software
+          solutions — web platforms, SaaS products, AI-powered tools, and automation
+          systems built to ship and scale.
         </p>
       </div>
 
@@ -81,11 +82,11 @@ export default function About() {
           <div className="about-block">
             <h3>Why Altraxon exists</h3>
             <p>
-              We exist to close that gap. Altraxon was founded on a simple conviction:
-              reliable, well-engineered software is one of the fastest ways to move a
-              business forward. We build with modern technology and disciplined process so
-              our partners can focus on growing — while we own the engineering that gets
-              them there.
+              We exist to close that gap. Altraxon was founded in 2026 on a simple
+              conviction: reliable, well-engineered software is one of the fastest ways
+              to move a business forward. We combine modern software engineering with
+              AI and automation to build products that are practical, scalable, and
+              genuinely worth using.
             </p>
           </div>
         </div>
