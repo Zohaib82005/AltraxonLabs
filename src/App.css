@@ -3387,6 +3387,17 @@
   padding: 12px 16px;
 }
 
+.form-error-banner {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ff7c9b;
+  background: rgba(255, 92, 120, 0.08);
+  border: 1px solid rgba(255, 92, 120, 0.28);
+  border-radius: 10px;
+  padding: 13px 16px;
+}
+
 .contact-form-foot {
   display: flex;
   align-items: center;

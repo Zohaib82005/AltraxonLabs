@@ -1,12 +1,19 @@
+import emailjs from '@emailjs/browser'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ContactVisual from './ContactVisual'
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+const INBOX_ADDRESS = 'altraxonlabs@gmail.com'
 
 type Errors = {
   [key: string]: string | undefined
 }
 
-type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
+type SubmitStatus = 'idle' | 'submitting' | 'success'
 
 const SERVICES = [
   'Web Development',
@@ -242,9 +249,11 @@ function SelectField({
 
 function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null)
+  const submittingRef = useRef(false)
   const [status, setStatus] = useState<SubmitStatus>('idle')
   const [errors, setErrors] = useState<Errors>({})
   const [summary, setSummary] = useState<string>('')
+  const [formError, setFormError] = useState<string>('')
 
   const validate = useCallback((form: HTMLFormElement) => {
     const data = new FormData(form)
@@ -289,25 +298,73 @@ function ContactForm() {
     el?.focus()
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!formRef.current) return
+    if (!formRef.current || submittingRef.current) return
 
     const next = validate(formRef.current)
     setErrors(next)
     if (Object.keys(next).length > 0) {
       setSummary('Please fix the highlighted fields and try again.')
+      setFormError('')
       focusFirstError(next)
       return
     }
 
-    setSummary('')
-    setStatus('submitting')
+    const data = new FormData(formRef.current)
+    const payload = {
+      fullName: String(data.get('fullName') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      company: String(data.get('company') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      service: String(data.get('service') || '').trim(),
+      budget: String(data.get('budget') || '').trim(),
+      timeline: String(data.get('timeline') || '').trim(),
+      details: String(data.get('details') || '').trim(),
+    }
 
-    // Simulated submission — replace with your API endpoint / email service.
-    window.setTimeout(() => {
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.warn(
+        '[contact] EmailJS is not configured. Set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY.',
+      )
+      setFormError('The contact form is not configured yet. Please try again later, or email us directly at altraxonlabs@gmail.com.')
+      return
+    }
+
+    setSummary('')
+    setFormError('')
+    setStatus('submitting')
+    submittingRef.current = true
+
+    try {
+      const templateParams = {
+        to_email: INBOX_ADDRESS,
+        from_name: payload.fullName,
+        from_email: payload.email,
+        reply_to: payload.email,
+        subject: `New Project Inquiry — ${payload.fullName}`,
+        service: payload.service,
+        company: payload.company || '—',
+        phone: payload.phone || '—',
+        budget: payload.budget || '—',
+        timeline: payload.timeline || '—',
+        message: payload.details,
+      }
+
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      })
+
       setStatus('success')
-    }, 1400)
+    } catch (err) {
+      console.error('[contact] EmailJS send failed:', err)
+      setFormError(
+        'We couldn’t send your message right now. Please try again in a moment, or email us directly at altraxonlabs@gmail.com.',
+      )
+      setStatus('idle')
+    } finally {
+      submittingRef.current = false
+    }
   }
 
   const handleChange = () => {
@@ -316,6 +373,7 @@ function ContactForm() {
       setErrors({})
       setSummary('')
     }
+    if (formError) setFormError('')
   }
 
   if (status === 'success') {
@@ -326,11 +384,11 @@ function ContactForm() {
             <path d="m9 21 7.5 7.5L31 12" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <h3>Message received — thank you!</h3>
+        <h3>Thank you! Your message has been sent successfully.</h3>
         <p>
-          Your project brief is with our team. We’ll review your requirements and get
-          back to you shortly with next steps. If it’s urgent, feel free to reach out
-          through the contact details below.
+          We’ll review your requirements and get back to you soon — typically within
+          one business day. If it’s urgent, feel free to reach out through the contact
+          details below.
         </p>
         <button type="button" className="btn btn-secondary" onClick={() => {
           setStatus('idle')
@@ -424,6 +482,12 @@ function ContactForm() {
         )}
       </div>
 
+      {formError && (
+        <p className="form-error-banner" role="alert">
+          {formError}
+        </p>
+      )}
+
       {summary && (
         <p className="form-summary" role="alert">
           {summary}
@@ -431,7 +495,12 @@ function ContactForm() {
       )}
 
       <div className="contact-form-foot">
-        <button type="submit" className="btn btn-primary contact-submit" disabled={status === 'submitting'}>
+        <button
+          type="submit"
+          className="btn btn-primary contact-submit"
+          disabled={status === 'submitting'}
+          aria-busy={status === 'submitting'}
+        >
           {status === 'submitting' ? (
             <>
               <span className="spinner" aria-hidden="true" />
@@ -468,7 +537,7 @@ function ContactInfo() {
         <div>
           <h4>Email</h4>
           <p>Ready to talk projects</p>
-          <a href="mailto:solutions@altraxonlabs.ai">solutions@altraxonlabs.ai</a>
+          <a href="mailto:altraxonlabs@gmail.com">altraxonlabs@gmail.com</a>
         </div>
       </div>
 
