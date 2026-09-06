@@ -563,26 +563,39 @@ function ContactInfo() {
         </div>
         <div>
           <h4>Office</h4>
-          <p>Replace with your address</p>
+          <p>Remote</p>
         </div>
       </div>
 
       <div className="contact-info-socials">
         <span className="contact-info-socials-label">Find us online</span>
-        <div className="contact-info-socials-row">
+<div className="contact-info-socials-row">
           <a href="#contact" className="contact-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V24h-4V8Zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.87-4.7-2.87 0-3.3 2.23-3.3 4.54V24H8V8Z" />
             </svg>
           </a>
-          <a href="#contact" className="contact-social-btn" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L2.6 2H9l4.4 5.9L18.9 2Zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20Z" />
+          <a href="https://www.altraxonlabs.vercel.app" target='_blank' className="contact-social-btn" aria-label="Website">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+              <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" strokeWidth="1.5" />
             </svg>
           </a>
-          <a href="#contact" className="contact-social-btn" aria-label="GitHub">
+          <a href="https://www.instagram.com/altraxonlabs/" target='_blank' className="contact-social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
+              <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
+              <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61593774101249" target='_blank' className="contact-social-btn" aria-label="Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12a10 10 0 0 0 6.84 9.5c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.96 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.69 0 3.86-2.34 4.71-4.57 4.96.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z" />
+              <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.6c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.5H7.4V14h2.7v8h3.4Z" />
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@AltraxonLab" target='_blank' className="contact-social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27.2 27.2 0 0 0 2 12c0 1.6.1 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.3-1.6.4-3.2.4-4.8s-.1-3.2-.4-4.8ZM10 15.2V8.8l5.5 3.2L10 15.2Z" />
             </svg>
           </a>
         </div>
